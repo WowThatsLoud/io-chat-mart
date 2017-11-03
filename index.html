@@ -33,7 +33,9 @@
 				
 				socket.on('new message', function(data){
 					$chat.append("<div class='message'>" + data + "</div>");
+					alert(data);
 				});
+			
 			});
 		</script>
 		
