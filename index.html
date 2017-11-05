@@ -48,6 +48,7 @@
 				var $nickForm = $("#setNick");
 				var $nickError = $("#nickError");
 				var $nickBox = $("#nickname");
+				var $users = $("#users");
 				var $messageForm = $("#send-message");
 				var $messageBox = $("#message");
 				var $chat = $("#chat");
@@ -65,6 +66,15 @@
 					$nickBox.val('');
 				});
 				
+				socket.on('úsernames', function(data){
+					var html = '<ul>';
+					for(i = 0; i < data.length; i++) {
+						html += '<li>' + data[i] + '</li>';
+					}
+					html += '</ul>';
+					$users.html(html);
+				});
+					
 				$messageForm.submit(function(e){
 					e.preventDefault();
 					socket.emit('send message', $messageBox.val());
