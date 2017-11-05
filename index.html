@@ -83,7 +83,7 @@
 				});
 				
 				socket.on('new message', function(data){
-					$chat.append("<div class='message'>" + data + "</div>");
+					$chat.append("<div class='message'><b>" + data.nick + ": </b>" + data.msg + "</div>");
 				});
 			
 			});
