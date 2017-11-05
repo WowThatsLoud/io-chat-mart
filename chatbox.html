@@ -68,6 +68,7 @@
 				border-radius: 3px;
 				top:15%;
 				position: absolute;
+				padding: 10px;
 			}
 			
 			.icons-toolbar {
@@ -120,8 +121,7 @@
 					<form id="send-message">
 						<div class="new-message-overview position-relative">
 							<div class="icons-toolbar">ABC</div>
-							<textarea id="message">
-							</textarea>
+							<textarea id="message"></textarea>
 							<div class="submit-button-chat-wrapper">
 								<input class="submit-button-chat" type="submit">
 							</div>	
@@ -190,7 +190,7 @@
 				});
 			
 				socket.on('whisper', function(data) {
-					$chat.append("<div class='message'><i><b>" + data.nick + ": </b>" + data.msg + "</i></div>");
+					$chat.append("<div class='message-user'><p class='message-name'>" + data.nick + " says:</p><p>" + data.msg + "</p></div>");
 				});
 			
 				socket.on('open connection', function(data) {
