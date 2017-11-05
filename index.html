@@ -66,17 +66,16 @@
 					$nickBox.val('');
 				});
 				
-				$(".userListName").on("click", function(e) {
-					var nameToChat = $(this).attr("data-attr");
+				function openNewConnection(data) {
+					var nameToChat = data;
 					socket.emit('open connection', nameToChat);
-				});
+				}
 				
 				socket.on('usernames', function(data){
-					var html = '<ul>';
+					var html = '';
 					for(i = 0; i < data.length; i++) {
-						html += '<div class="userListName" data-attr="' + data[i] + '">' + data[i] + '</div>';
+						html += '<button onclick="openNewConnection(\'' + data[i] + '\')" class="userListName" data-attr="' + data[i] + '">' + data[i] + '</div><br>';
 					}
-					html += '</ul>';
 					$users.html(html);
 				});
 					
