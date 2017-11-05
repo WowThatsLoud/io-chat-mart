@@ -152,6 +152,10 @@
 			</div>
 		</div>
 		
+		<audio style="display:none;" id="notification-player-audio" >
+		  <source id="notification-player" src="assets/MSNNotification.mp3" type="audio/mpeg">
+		</audio>
+		
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		
@@ -197,6 +201,8 @@
 				
 				socket.on('new message', function(data){
 					$chat.append("<div class='message-user'><p class='message-name'>" + data.nick + " says:</p><p>" + data.msg + "</p></div>");
+					
+					$('.notification-player-audio').play();
 				});
 			
 				socket.on('whisper', function(data) {
