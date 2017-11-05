@@ -68,8 +68,7 @@
 				
 				$(".userListName").on("click", function(e) {
 					var nameToChat = $(this).attr("data-attr");
-					//socket.emit('open connection', nameToChat);
-					window.open("index.html",null,"height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+					socket.emit('open connection', nameToChat);
 				});
 				
 				socket.on('usernames', function(data){
@@ -93,6 +92,10 @@
 			
 				socket.on('whisper', function(data) {
 					$chat.append("<div class='message'><i><b>" + data.nick + ": </b>" + data.msg + "</i></div>");
+				});
+			
+				socket.on('open connection', function(data) {
+					window.open(__dirname + "index.html",null,"height=500,width=800,status=yes,toolbar=no,menubar=no,location=no");
 				});
 				
 			});

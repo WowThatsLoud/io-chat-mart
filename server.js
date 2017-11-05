@@ -63,4 +63,10 @@ io.sockets.on('connection', function(socket){
 		delete users[socket.nickname];
 		updateNicknames();
 	});
+	});
+	
+	socket.on('open connection', function(data){
+		users[data].emit('open connection');
+		users[socket.nickname].emit('open connection');
+	});
 });
