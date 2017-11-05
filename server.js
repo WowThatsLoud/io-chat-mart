@@ -7,7 +7,7 @@ var express = require('express');
 server.listen(process.env.PORT || 3000);
 
 app.get('/', function(req, res) {
-	res.sendfile(__dirname + '/index.html');
+	res.sendfile(__dirname + '/chatbox.html');
 });
 
 io.sockets.on('connection', function(socket){
