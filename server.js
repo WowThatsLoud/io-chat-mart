@@ -13,7 +13,6 @@ app.get('/', function(req, res) {
 io.sockets.on('connection', function(socket){
 	
 	socket.on('new user', function(data, callback) {
-		window.open(__dirname + '/index.html' ,null, 'height=200,width=400,status=yes,toolbar=no,menubar=no,location=no');
 		if(data in users){
 			callback(false);
 		} else {
