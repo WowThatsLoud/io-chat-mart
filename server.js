@@ -41,15 +41,20 @@ io.sockets.on('connection', function(socket){
 					
 					//Actual user
 					users[name].emit('whisper', {msg: msg, nick: socket.nickname});
+					console.log('Whisper send');
 					
 				} else {
 					
 					//User not found
+					console.log('User not found');
 					
 				}
 				
 			} else {
+				
 				//if no message is given
+				console.log('No message is given');
+					
 			}
 		} else {
 			io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
