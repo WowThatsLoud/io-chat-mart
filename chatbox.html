@@ -106,7 +106,7 @@
 			
 			.message-name {
 				margin-bottom: 0;
-				padding-left: 5px;
+				padding-left: 5px !important;
 			}
 		</style>
 	</head>
@@ -202,6 +202,10 @@
 				socket.on('new message', function(data){
 					$chat.append("<div class='message-user'><p class='message-name'>" + data.nick + " says:</p><p>" + data.msg + "</p></div>");
 					
+					var wtf    = $('#chat');
+					var height = wtf[0].scrollHeight;
+					wtf.scrollTop(height);
+
 					$('.notification-player-audio').trigger("play");
 				});
 			
