@@ -43,11 +43,6 @@
 		<script src="/socket.io/socket.io.js"></script>
 		
 		<script>
-				
-			function openNewConnection(data) {
-				var nameToChat = data;
-				socket.emit('open connection', nameToChat);
-			}
 			
 			$(function() {
 				var socket = io.connect();
@@ -99,6 +94,11 @@
 				});
 				
 			});
+				
+			function openNewConnection(data) {
+				var nameToChat = data;
+				socket.emit('open connection', nameToChat);
+			}
 		</script>
 		
 	</body>
