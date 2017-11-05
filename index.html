@@ -74,7 +74,7 @@
 				socket.on('usernames', function(data){
 					var html = '<ul>';
 					for(i = 0; i < data.length; i++) {
-						html += '<li class="userListName" data-attr="' + data[i] + '">' + data[i] + '</li>';
+						html += '<div class="userListName" data-attr="' + data[i] + '">' + data[i] + '</div>';
 					}
 					html += '</ul>';
 					$users.html(html);

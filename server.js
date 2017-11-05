@@ -66,7 +66,7 @@ io.sockets.on('connection', function(socket){
 	});
 	
 	socket.on('open connection', function(data){
-		users[data].emit('open connection');
-		users[socket.nickname].emit('open connection');
+		users[data].emit('open connection', "Ping");
+		users[socket.nickname].emit('open connection', "Pong");
 	});
 });
