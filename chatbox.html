@@ -202,7 +202,7 @@
 				socket.on('new message', function(data){
 					$chat.append("<div class='message-user'><p class='message-name'>" + data.nick + " says:</p><p>" + data.msg + "</p></div>");
 					
-					$('.notification-player-audio').play();
+					$('.notification-player-audio').trigger("play");
 				});
 			
 				socket.on('whisper', function(data) {
