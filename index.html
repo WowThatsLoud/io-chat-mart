@@ -43,6 +43,12 @@
 		<script src="/socket.io/socket.io.js"></script>
 		
 		<script>
+				
+			function openNewConnection(data) {
+				var nameToChat = data;
+				socket.emit('open connection', nameToChat);
+			}
+			
 			$(function() {
 				var socket = io.connect();
 				var $nickForm = $("#setNick");
@@ -65,11 +71,6 @@
 					});
 					$nickBox.val('');
 				});
-				
-				function openNewConnection(data) {
-					var nameToChat = data;
-					socket.emit('open connection', nameToChat);
-				}
 				
 				socket.on('usernames', function(data){
 					var html = '';
