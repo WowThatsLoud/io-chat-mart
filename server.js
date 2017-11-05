@@ -28,7 +28,32 @@ io.sockets.on('connection', function(socket){
 	}
 	
 	socket.on('send message', function(data){
-		io.sockets.emit('new message', {msg: data, nick: socket.nickname});
+		var msg = data.trim;
+		if(msg.substr(0, 3) === "/w ") {
+			msg = msg.substr(3);
+			var ind = msg.indexOf(" ");
+			if(ind !== -1) {
+				
+				var name = msg.substring(0, ind);
+				var msg = msg.substring(ind + 1);
+				
+				if(name in users) {
+					
+					//Actual user
+					users[name].emit('whisper', {msg: msg, nick: socket.nickname});
+					
+				} else {
+					
+					//User not found
+					
+				}
+				
+			} else {
+				//if no message is given
+			}
+		} else {
+			io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
+		}
 	});
 	
 	socket.on('disconnect', function(data){
