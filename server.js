@@ -28,8 +28,8 @@ io.sockets.on('connection', function(socket){
 	}
 	
 	socket.on('send message', function(data){
-		var msg = data.trim;
-		/*if(msg.substr(0, 3) === "/w ") {
+		var msg = data.trim();
+		if(msg.substr(0, 3) === "/w ") {
 			msg = msg.substr(3);
 			var ind = msg.indexOf(" ");
 			if(ind !== -1) {
@@ -53,9 +53,9 @@ io.sockets.on('connection', function(socket){
 				//if no message is given
 					
 			}
-		} else {*/
+		} else {
 			io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
-		/*}*/
+		}
 	});
 	
 	socket.on('disconnect', function(data){
