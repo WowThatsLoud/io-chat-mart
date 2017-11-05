@@ -86,7 +86,7 @@
 					$chat.append("<div class='message'><b>" + data.nick + ": </b>" + data.msg + "</div>");
 				});
 			
-				socket.on('whisper', function(data)) {
+				socket.on('whisper', function(data) {
 					$chat.append("<div class='message'><i><b>" + data.nick + ": </b>" + data.msg + "</i></div>");
 				});
 				
