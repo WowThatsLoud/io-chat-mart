@@ -2,7 +2,125 @@
 	<head>
 
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link href="/style.css" rel="stylesheet">
+
+		<style>
+		body {
+		  background-color: #ecf6f8;
+		}
+
+		.box-shadow-bottom {
+		  box-shadow: 0 2px 2px -2px gray;
+		}
+
+		.upper-bar-options {
+		  background: #eef1f1; /* Old browsers */
+		  background: -moz-linear-gradient(top, #eef1f1 0%, #c8f0fb 50%, #b4dce8 51%, #e9f7f9 100%); /* FF3.6-15 */
+		  background: -webkit-linear-gradient(top, #eef1f1 0%,#c8f0fb 50%,#b4dce8 51%,#e9f7f9 100%); /* Chrome10-25,Safari5.1-6 */
+		  background: linear-gradient(to bottom, #eef1f1 0%,#c8f0fb 50%,#b4dce8 51%,#e9f7f9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eef1f1', endColorstr='#e9f7f9',GradientType=0 ); /* IE6-9 */
+		}
+
+		.position-relative { position:relative; }
+		.inline-block { display: inline-block; }
+
+		.settings-square-icon {
+		  list-style-type: none;
+		  width: 32px;
+		  height: 32px;
+		  background-color: red;
+		  margin-right: 10px;
+		  line-height: 32px;
+		  text-align: center;
+		}
+
+		.settings-collection {
+		  padding: 0px 10px !important;
+		  margin-top: 10px;
+		  margin-bottom: 10px;
+		}
+
+		.row-chat-overview{
+		  position: absolute;
+		  width: 100%;
+		  height: calc(100% - 52px);
+		}
+
+		.chat-overview {
+		  height: 70%;
+		  padding: 15px 0;
+		}
+
+		#chat {
+		  background-color: white;
+		  border: 1px solid #d6dde1;
+		  height: 100%;
+		  border-radius: 3px;
+		  overflow-y: scroll;
+		}
+
+		.new-message-overview {
+		  height: 30%;
+		  padding: 15px 0 40px;
+		}
+
+		#message {
+		  width: 100%;
+		  border: 1px solid #d6dde1;
+		  height: 55%;
+		  border-radius: 3px;
+		  top:15%;
+		  position: absolute;
+		  padding: 10px;
+		}
+
+		.icons-toolbar {
+		  position: absolute;
+		  top: 0;
+		  width: 100%;
+		  height: 15%;
+		  background: #eff9fa; /* Old browsers */
+		  background: -moz-linear-gradient(top, #eff9fa 30%, #e6f0f2 50%, #e6f0f2 52%, #eff9fa 70%); /* FF3.6-15 */
+		  background: -webkit-linear-gradient(top, #eff9fa 30%,#e6f0f2 50%,#e6f0f2 52%,#eff9fa 70%); /* Chrome10-25,Safari5.1-6 */
+		  background: linear-gradient(to bottom, #eff9fa 30%,#e6f0f2 50%,#e6f0f2 52%,#eff9fa 70%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eff9fa', endColorstr='#eff9fa',GradientType=0 ); /* IE6-9 */
+		  border-top: 1px solid #d6dde1;
+		  border-left: 1px solid #d6dde1;
+		  border-right: 1px solid #d6dde1;
+		  padding: 6px 10px;
+		}
+
+		.submit-button-chat-wrapper {
+		  top: 70%;
+		  height: 20%;
+		  position: absolute;
+		  width: 100%;
+		  padding: 10px 0px;
+		}
+
+		.submit-button-chat {
+		  float:right;
+		}
+
+		#chat p {
+		  padding-left: 10px;
+		}
+
+		.message-name {
+		  margin-bottom: 0;
+		  padding-left: 5px !important;
+		}
+
+		.chat-box {
+		  position:fixed;
+		  width:800px;
+		  height:500px;
+		  left:50%;
+		  top:50%;
+		  transform:translate(-50%, -50%);
+		    box-shadow: 2px 2px 3px #888888;
+		}
+
+		</style>
 
 	</head>
 	<body>
