@@ -1,71 +1,14 @@
-var express = require('express');
-	app = express(),
-	server = require('http').createServer(app),
-	io = require('socket.io').listen(server),
-	users = {};
-	
-server.listen(process.env.PORT || 3000);
+var http = require('http'),
+	express = require('express'),
+	chatServer = require('./lib/chat-server');
 
-app.get('/', function(req, res) {
-	res.sendfile(__dirname + '/chatbox.html');
-});
+var app = express();
+app.use(app.router);
+app.use(express.static(__dirname + '/public'));
 
-io.sockets.on('connection', function(socket){
-	
-	socket.on('new user', function(data, callback) {
-		if(data in users){
-			callback(false);
-		} else {
-			callback(true);
-			socket.nickname = data;
-			users[socket.nickname] = socket;
-			updateNicknames();
-		}
-	});
-	
-	function updateNicknames() {
-		io.sockets.emit('usernames', Object.keys(users));
-	}
-	
-	socket.on('send message', function(data){
-		var msg = data.trim();
-		if(msg.substr(0, 3) === "/w ") {
-			msg = msg.substr(3);
-			var ind = msg.indexOf(" ");
-			if(ind !== -1) {
-				
-				var name = msg.substring(0, ind);
-				var msg = msg.substring(ind + 1);
-				
-				if(name in users) {
-					
-					//Actual user
-					users[name].emit('whisper', {msg: msg, nick: socket.nickname});
-					
-				} else {
-					
-					//User not found
-					
-				}
-				
-			} else {
-				
-				//if no message is given
-					
-			}
-		} else {
-			io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
-		}
-	});
-	
-	socket.on('disconnect', function(data){
-		if(!socket.nickname) return;
-		delete users[socket.nickname];
-		updateNicknames();
-	});
-	
-	socket.on('open connection', function(data){
-		users[data].emit('open connection', "Ping");
-		users[socket.nickname].emit('open connection', "Pong");
-	});
+var server = http.createServer(app).listen('3000', '127.0.0.1'); 
+chatServer.listen(server);
+
+app.get('/', function(req, res){
+	res.sendfile(__dirname + '/views/index.html');
 });
