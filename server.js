@@ -6,7 +6,7 @@ var app = express();
 app.use(app.router);
 app.use(express.static(__dirname + '/public'));
 
-var server = http.createServer(app).listen(process.env.PORT || 3000, '127.0.0.1'); 
+var server = http.createServer(app).listen(process.env.PORT || 3000); 
 chatServer.listen(server);
 
 app.get('/', function(req, res){
